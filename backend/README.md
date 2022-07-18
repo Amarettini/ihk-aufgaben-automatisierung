@@ -1,0 +1,1 @@
+`./public/` - Statisch gehostete Dateien
