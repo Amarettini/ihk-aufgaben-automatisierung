@@ -77,14 +77,14 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
   return (
     <div>
       <div>
-        <TextareaInput onChange={section1TextHandler}>{section1Text}</TextareaInput>
+        <TextareaInput onChange={section1TextHandler} label={"Text"}>{section1Text}</TextareaInput>
         <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} />
       </div>
       <div>
-        <TextareaInput onChange={section2TextHandler}>{section2Text}</TextareaInput>
+        <TextareaInput onChange={section2TextHandler} label={"Aufgabentext"}>{section2Text}</TextareaInput>
       </div>
       <div>
-        <TextareaInput onChange={section3TextHandler}>{section3Text}</TextareaInput>
+        <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"}>{section3Text}</TextareaInput>
         <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} />
       </div>
       <button onClick={submitHandler}>+</button>

@@ -1,4 +1,3 @@
-import './App.css';
 import { ExerciseFormContainer } from './components/ExerciseFormContainer';
 import { ExercisePreview, ExerciseData } from './components/ExercisePreview';
 
@@ -16,7 +15,7 @@ const addExercise = (exercise: ExerciseData) => {
 
 function App() {
   return (
-    <div>
+    <div className="container-sm">
       {
         exercises.map((exercise) => {
           return <ExercisePreview exercise={exercise} />
