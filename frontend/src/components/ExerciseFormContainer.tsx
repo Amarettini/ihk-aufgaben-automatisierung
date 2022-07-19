@@ -76,16 +76,24 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
 
   return (
     <div>
-      <div>
-        <TextareaInput onChange={section1TextHandler} label={"Text"}>{section1Text}</TextareaInput>
-        <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} />
+      <div className="row">
+        <div className="col">
+          <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} />
+        </div>
+        <div className="col">
+          <TextareaInput onChange={section1TextHandler} label={"Text"}>{section1Text}</TextareaInput>
+        </div>
       </div>
       <div>
         <TextareaInput onChange={section2TextHandler} label={"Aufgabentext"}>{section2Text}</TextareaInput>
       </div>
-      <div>
-        <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"}>{section3Text}</TextareaInput>
-        <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} />
+      <div className="row">
+        <div className="col">
+          <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"}>{section3Text}</TextareaInput>
+        </div>
+        <div className="col">
+          <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} />
+        </div>
       </div>
       <button onClick={submitHandler}>+</button>
       <h4>Debug exercise object:</h4>
