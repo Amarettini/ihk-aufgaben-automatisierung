@@ -9,7 +9,7 @@ type TextareaInputProps = {
 export const TextareaInput: React.FC<TextareaInputProps> = ({ onChange, label, children: content }) => {
 
   return (<div className={"mb-3"}>
-    <label htmlFor={label} className={"form-label"}>{label}</label>
+    {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
     <textarea id={label} className="form-control" onChange={onChange}>{content}</textarea>
   </div>)
 }

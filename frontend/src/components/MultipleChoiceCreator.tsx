@@ -22,7 +22,7 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
 
 
   return <div>
-    <label className="form-label">Multiple Choice</label>
+    {/* <label className="form-label">Multiple Choice</label> */}
     {choices.map((choice, i) => {
       return <div className="form-check">
         <input
