@@ -1,9 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { ExerciseFormContainer } from './components/ExerciseFormContainer';
 import { ExercisePreview, ExerciseData } from './components/ExercisePreview';
-
 
 const exercises: ExerciseData[] = [
   {
@@ -19,7 +16,7 @@ const addExercise = (exercise: ExerciseData) => {
 
 function App() {
   return (
-    <div className="App">
+    <div>
       {
         exercises.map((exercise) => {
           return <ExercisePreview exercise={exercise} />
