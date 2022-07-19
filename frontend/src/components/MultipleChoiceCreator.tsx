@@ -22,18 +22,19 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
 
 
   return <div>
+    <label className="form-label">Multiple Choice</label>
     {choices.map((choice, i) => {
       return <div className="form-check">
-        <label>
-          <input
-            type="radio"
-            name="section3"
-            value={i.toString()}
-            checked={choice.correct}
-            onChange={() => handleCorrectChoiceChnage(i)}
-            className="form-check-input"
-          />
-          <input type={"text"} onChange={(event) => handleChoiceTextChange(i, event.target.value)} value={choice.text} />
+        <input
+          type="radio"
+          name="section3"
+          value={i.toString()}
+          checked={choice.correct}
+          onChange={() => handleCorrectChoiceChnage(i)}
+          className="form-check-input"
+        />
+        <label className="form-check-label">
+          <input className="form-control form-control-sm" type={"text"} onChange={(event) => handleChoiceTextChange(i, event.target.value)} value={choice.text} />
         </label>
       </div>
     })
