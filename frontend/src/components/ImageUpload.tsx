@@ -3,9 +3,10 @@ import React from "react"
 type ImageUploadProps = {
   selectedImage: File | null;
   setSelectedImage: (image: File) => void;
+  label: string;
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = ({ selectedImage, setSelectedImage }) => {
+export const ImageUpload: React.FC<ImageUploadProps> = ({ selectedImage, setSelectedImage, label }) => {
 
   const handleImageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     if (event.target.files) {
@@ -36,7 +37,8 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ selectedImage, setSele
 
   return (
     <div>
-      <input type="file" onChange={handleImageChange} />
+      <label htmlFor={label} className={"form-label"}>{label}</label>
+      <input id={label} className={"form-control"} type="file" onChange={handleImageChange} />
       {imageData()}
     </div>
   );
