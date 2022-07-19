@@ -33,9 +33,9 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
           onChange={() => handleCorrectChoiceChnage(i)}
           className="form-check-input"
         />
-        <label className="form-check-label">
-          <input className="form-control form-control-sm" type={"text"} onChange={(event) => handleChoiceTextChange(i, event.target.value)} value={choice.text} />
-        </label>
+        {/* <label className="form-check-label"> */}
+        <input className="form-control form-control-sm" type={"text"} onChange={(event) => handleChoiceTextChange(i, event.target.value)} value={choice.text} />
+        {/* </label> */}
       </div>
     })
     }</div>

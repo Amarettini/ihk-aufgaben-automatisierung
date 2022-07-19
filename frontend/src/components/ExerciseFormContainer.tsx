@@ -76,7 +76,7 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
 
   return (
     <div>
-      <div className="row">
+      <div className="row mb-4">
         <div className="col">
           <h4>Waehle ein Bild aus...</h4>
           <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} />
@@ -86,11 +86,11 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
           <TextareaInput onChange={section1TextHandler} label={"Text"}>{section1Text}</TextareaInput>
         </div>
       </div>
-      <div>
+      <div className="mb-4">
         <h4>Aufgabentext</h4>
         <TextareaInput onChange={section2TextHandler} label={"Aufgabentext"}>{section2Text}</TextareaInput>
       </div>
-      <div className="row">
+      <div className="row mb-4">
         <div className="col">
           <h4>Musterloesung...</h4>
           <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"}>{section3Text}</TextareaInput>
