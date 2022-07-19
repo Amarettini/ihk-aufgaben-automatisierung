@@ -1,19 +1,23 @@
+import { useState } from 'react';
 import { ExerciseFormContainer } from './components/ExerciseFormContainer';
 import { ExercisePreview, ExerciseData } from './components/ExercisePreview';
 
-const exercises: ExerciseData[] = [
-  {
-    section1: { type: "text_question", question: "Frage NR. 1" },
-    section2: { type: "text_question", question: "Fragen appendix" },
-    section3: { type: "text_anwser", anwser: "Antwort ist 42" }
-  }
-];
-
-const addExercise = (exercise: ExerciseData) => {
-  exercises.push(exercise);
-}
 
 function App() {
+  const [exercises, setExercises] = useState<ExerciseData[]>([
+    {
+      section1: { type: "text_question", question: "Frage NR. 1" },
+      section2: { type: "text_question", question: "Fragen appendix" },
+      section3: { type: "text_anwser", anwser: "Antwort ist 42" }
+    }
+  ]);
+
+  const addExercise = (exercise: ExerciseData) => {
+    const newExercises = [...exercises];
+    newExercises.push(exercise);
+    setExercises(newExercises);
+  }
+
   return (
     <div className="container-sm">
       {
