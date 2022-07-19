@@ -100,7 +100,9 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
           <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} />
         </div>
       </div>
-      <button onClick={submitHandler}>+</button>
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-primary" onClick={submitHandler}>+</button>
+      </div>
       <h4>Debug exercise object:</h4>
       <pre><code>
         {JSON.stringify(buildExercise(), undefined, 2)}
