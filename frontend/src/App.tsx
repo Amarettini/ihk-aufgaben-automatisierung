@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { ExerciseFormContainer } from './components/ExerciseFormContainer';
+import { ExercisePreview, ExerciseData } from './components/ExercisePreview';
+
 
 function App() {
+  const [exercises, setExercises] = useState<ExerciseData[]>([
+    {
+      section1: { type: "text_question", question: "Frage NR. 1" },
+      section2: { type: "text_question", question: "Fragen appendix" },
+      section3: { type: "text_anwser", anwser: "Antwort ist 42" }
+    }
+  ]);
+
+  const addExercise = (exercise: ExerciseData) => {
+    const newExercises = [...exercises];
+    newExercises.push(exercise);
+    setExercises(newExercises);
+
+    fetch("/api/save", {
+      method: "POST",
+      body: JSON.stringify(exercise),
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-sm">
+      {
+        exercises.map((exercise) => {
+          return <ExercisePreview exercise={exercise} />
+        })
+      }
+      <ExerciseFormContainer onAdd={addExercise} />
     </div>
   );
 }
