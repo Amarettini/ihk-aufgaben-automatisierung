@@ -36,11 +36,31 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
     setSection3Text(event.target.value);
   }
 
-  const buildExercise = (): ExerciseData | null => {
+  async function toDataUrl(url: string, outputFormat: string): Promise<string> {
+    const dataUrl = new Promise<string>((resolve) => {
+      var img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = (function(this: HTMLImageElement) {
+        // todo maybe we need to remove the element again?
+        const canvas = new HTMLCanvasElement();
+        const ctx = canvas.getContext('2d')!;
+        canvas.height = this.height;
+        canvas.width = this.width;
+        ctx.drawImage(this, 0, 0);
+        resolve(canvas.toDataURL(outputFormat));
+      }).bind(img);
+      img.src = url;
+    });
+    return dataUrl;
+  }
+
+  const buildExercise = async (): Promise<ExerciseData | null> => {
 
     let section1: ExerciseData["section1"];
     if (!!section1selectedImage) {
-      section1 = { type: "image_question", imagePath: section1selectedImage.name };
+      const tempImageUrl = URL.createObjectURL(section1selectedImage);
+      section1 = { type: "image_question", imagePath: await toDataUrl(tempImageUrl, "image/png") };
+
     } else if (!!section1Text) {
       section1 = { type: "text_question", question: section1Text };
     } else {
@@ -65,8 +85,8 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
     };
   }
 
-  const submitHandler = () => {
-    const data = buildExercise();
+  const submitHandler = async () => {
+    const data = await buildExercise();
     if (!data) {
       console.error("Failed to submit exercise data!");
       return;
@@ -103,10 +123,6 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       <div className="d-flex justify-content-end">
         <button className="btn btn-primary" onClick={submitHandler}>+</button>
       </div>
-      <h4>Debug exercise object:</h4>
-      <pre><code>
-        {JSON.stringify(buildExercise(), undefined, 2)}
-      </code></pre>
     </div>
   )
 }

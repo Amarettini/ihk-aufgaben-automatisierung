@@ -6,7 +6,7 @@ type ImageUploadProps = {
   label: string;
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = ({ selectedImage, setSelectedImage, label }) => {
+export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedImage, setSelectedImage, label }) => {
 
   const handleImageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     if (event.target.files) {
@@ -29,6 +29,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ selectedImage, setSele
       {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
       <input id={label} className={"form-control"} type="file" onChange={handleImageChange} />
       {imageData()}
+      {selectedImage && <img src={URL.createObjectURL(selectedImage)} />}
     </div>
   );
-}
+});
