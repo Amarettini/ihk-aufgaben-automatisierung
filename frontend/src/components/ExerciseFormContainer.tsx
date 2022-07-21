@@ -42,7 +42,7 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       img.crossOrigin = 'Anonymous';
       img.onload = (function(this: HTMLImageElement) {
         // todo maybe we need to remove the element again?
-        const canvas = new HTMLCanvasElement();
+        const canvas = document.createElement("canvas");
         const ctx = canvas.getContext('2d')!;
         canvas.height = this.height;
         canvas.width = this.width;
@@ -91,6 +91,7 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       console.error("Failed to submit exercise data!");
       return;
     }
+    console.log(data);
     onAdd(data);
   }
 
