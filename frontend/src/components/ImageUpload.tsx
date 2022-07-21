@@ -29,7 +29,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedIma
       {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
       <input id={label} className={"form-control"} type="file" onChange={handleImageChange} />
       {imageData()}
-      {selectedImage && <img src={URL.createObjectURL(selectedImage)} />}
+      {selectedImage && <img src={URL.createObjectURL(selectedImage)} className="img-fluid" />}
     </div>
   );
 });

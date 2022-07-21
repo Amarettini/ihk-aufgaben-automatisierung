@@ -96,8 +96,11 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
   }
 
   return (
-    <div>
-      <div className="row mb-4">
+    <div className="container bg-light border border border-2 rounded mb-4 p-3">
+      <div className="row">
+        <h3 className="h2 mb-5">Aufgabe hinzufeugen</h3>
+      </div>
+      <div className="row">
         <div className="col">
           <h4>Waehle ein Bild aus...</h4>
           <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} />

@@ -27,12 +27,17 @@ function App() {
   }
 
   return (
-    <div className="container-sm">
-      {
-        exercises.map((exercise) => {
-          return <ExercisePreview exercise={exercise} />
-        })
-      }
+    <div>
+      <div className="container-fluid mt-4 px-5">
+        <div className="row g-5">
+          {
+            exercises.map((exercise) => {
+              return <ExercisePreview exercise={exercise} />
+            })
+          }
+        </div>
+        <hr className="my-5" />
+      </div>
       <ExerciseFormContainer onAdd={addExercise} />
     </div>
   );

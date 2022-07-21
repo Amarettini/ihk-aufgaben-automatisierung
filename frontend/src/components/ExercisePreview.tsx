@@ -1,4 +1,5 @@
 import React from "react";
+import { AnwserInput } from "./AnwserInput";
 
 export type ImageQuestioning = {
   type: "image_question";
@@ -37,15 +38,24 @@ type ExerciseProps = {
 };
 
 function createTextQuestion({ question }: TextQuestioning) {
-  return <p>{question}</p>;
+  return <h2>{question}</h2>;
 }
 
 function createImageQuestion({ imagePath }: ImageQuestioning) {
-  return <img src={imagePath} />;
+  // return <div className="text-center">
+  // return <img src={imagePath} className="img-fluid rounded" />
+  // return <div className="text-center">
+  // style={{ objectFit: 'contain', width: "100%" }}
+  return <div className="d-flex justify-content-center">
+    <div className="container-xl text-center">
+      <img src={imagePath} className="rounded img-fluid" alt="..." />
+    </div>
+  </div>
+  // </div>;
 }
 
 function createTextAnwserEl({ anwser }: TextAnwser) {
-  return <p>{anwser}</p>
+  return <AnwserInput >{anwser}</AnwserInput>
 }
 
 function createMultipleChoiceAnwser({ choices }: MultipleChoiceAnwser) {
@@ -71,9 +81,16 @@ export const ExercisePreview: React.FC<ExerciseProps> = ({ exercise }) => {
     createTextAnwserEl(exercise.section3) :
     createMultipleChoiceAnwser(exercise.section3);
 
-  return <div>
-    {section1El}
-    {section2El}
-    {section3El}
-  </div>
+  return <article className="col-6 ">
+    <div className="container border rounded shadow pt-4">
+      <div className="row border rounded-top py-3">
+        {section1El}
+      </div>
+      <div className="row border border-top-0 py-3">
+        {section2El}
+      </div>
+      <div className="row border border-top-0 rounded-bottom p-4 mb-4 bg-light">
+        {section3El}
+      </div>
+    </div></article>
 }
