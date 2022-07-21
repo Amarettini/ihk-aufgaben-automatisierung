@@ -1,1 +1,2 @@
-./python/templates/*
+python/templates/*
+python/__pycache__/
