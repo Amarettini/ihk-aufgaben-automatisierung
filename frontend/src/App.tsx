@@ -16,6 +16,11 @@ function App() {
     const newExercises = [...exercises];
     newExercises.push(exercise);
     setExercises(newExercises);
+
+    fetch("/api/save", {
+      method: "POST",
+      body: JSON.stringify(exercise),
+    })
   }
 
   return (
