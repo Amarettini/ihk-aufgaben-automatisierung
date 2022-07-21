@@ -2,7 +2,7 @@ import React from "react"
 
 type ImageUploadProps = {
   selectedImage: File | null;
-  setSelectedImage: (image: File) => void;
+  setSelectedImage: (image: File | null) => void;
   label: string;
 }
 
@@ -16,6 +16,11 @@ export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedIma
     }
   }
 
+  const handleRemoveImage = () => {
+    setSelectedImage(null)
+
+  }
+
   const imageData = () => {
     if (selectedImage) {
       return (
@@ -24,12 +29,15 @@ export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedIma
     }
   };
 
+
+
   return (
     <div>
       {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
-      <input id={label} className={"form-control"} type="file" onChange={handleImageChange} />
+      <input id={label} className="form-control mb-3" type="file" onChange={handleImageChange} />
       {imageData()}
       {selectedImage && <img src={URL.createObjectURL(selectedImage)} className="img-fluid" />}
+      <button type="button" className="btn btn-sm btn-danger" onClick={handleRemoveImage}>Entfernen</button>
     </div>
   );
 });
