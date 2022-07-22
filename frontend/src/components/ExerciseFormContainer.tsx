@@ -117,11 +117,11 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       <div className="row mb-4">
         <div className="col">
           <h4>Musterloesung...</h4>
-          <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"}>{section3Text}</TextareaInput>
+          <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"} blocked={!!(section3MultipleChoice[0].text)}>{section3Text}</TextareaInput>
         </div>
         <div className="col">
           <h4>... oder Multiple Choice</h4>
-          <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} />
+          <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} blocked={!!section3Text} />
         </div>
       </div>
       <div className="d-flex justify-content-end">
