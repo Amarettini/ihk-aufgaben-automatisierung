@@ -32,6 +32,7 @@ export type ExerciseData = {
   section1: ImageQuestioning | TextQuestioning;
   section2: TextQuestioning;
   section3: TextAnwser | MultipleChoiceAnwser;
+  userReference: string;
 };
 
 type ExerciseProps = {

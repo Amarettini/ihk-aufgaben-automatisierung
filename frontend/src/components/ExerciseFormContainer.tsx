@@ -24,6 +24,8 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
     { text: "", correct: false }
   ]);
 
+  const [username, setUsername] = useState("");
+
   const section1TextHandler: React.ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     setSection1Text(event.target.value);
   };
@@ -81,8 +83,13 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
     return {
       section1,
       section2: { type: "text_question", question: section2Text, },
-      section3
+      section3,
+      userReference: username
     };
+  }
+
+  const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUsername(event.target.value);
   }
 
   const submitHandler = async () => {
@@ -131,9 +138,18 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
           <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} blocked={!!section3Text} />
         </div>
       </div>
-      <div className="d-flex justify-content-end">
-        <button className="btn btn-primary" onClick={submitHandler}>Hinzufügen</button>
-      </div>
+
+      <hr className="row" />
+      <form className="row justify-content-end align-items-end g-3">
+        <div className="col-auto">
+          <label htmlFor="username" className="form-label">Benutzername Referenz</label>
+          <input type="text" className="form-control" id="username" placeholder="" value={username} onChange={handleUsernameChange} />
+        </div>
+        <div className="col-auto">
+          <button type="button" className="btn btn-primary" onClick={submitHandler}>Aufgabe Hinzufügen</button>
+        </div>
+      </form>
+
     </div>
   )
 }

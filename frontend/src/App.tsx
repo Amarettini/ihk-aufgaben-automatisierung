@@ -8,7 +8,8 @@ function App() {
     {
       section1: { type: "text_question", question: "Frage NR. 1" },
       section2: { type: "text_question", question: "Fragen appendix" },
-      section3: { type: "text_anwser", anwser: "Antwort ist 42" }
+      section3: { type: "text_anwser", anwser: "Antwort ist 42" },
+      userReference: "admin"
     }
   ]);
 
