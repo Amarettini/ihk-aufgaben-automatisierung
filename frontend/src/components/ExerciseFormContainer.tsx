@@ -102,7 +102,7 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       </div>
 
       <div className="row">
-        <div className="col">
+        <div className="col mb-3">
           <h4>Wähle ein Bild aus ...</h4>
           <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} blocked={!!section1Text} />
         </div>

@@ -39,7 +39,7 @@ type ExerciseProps = {
 };
 
 function createTextQuestion({ question }: TextQuestioning) {
-  return <h2>{question}</h2>;
+  return <header>{question}</header>;
 }
 
 function createImageQuestion({ imagePath }: ImageQuestioning) {
