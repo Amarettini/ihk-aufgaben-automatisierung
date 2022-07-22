@@ -36,7 +36,7 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
   return <div className="border p-2 rounded">
     {/* <label className="form-label">Multiple Choice</label> */}
     {choices.map((choice, i) => {
-      return <div className="form-check">
+      return <div className="form-check" key={i.toString()} >
         <input
           type="radio"
           name="section3"

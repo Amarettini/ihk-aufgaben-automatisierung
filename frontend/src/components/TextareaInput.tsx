@@ -11,7 +11,7 @@ export const TextareaInput: React.FC<TextareaInputProps> = ({ onChange, label, b
 
   return (<div className={"mb-3"}>
     {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
-    <textarea id={label} className="form-control" onChange={onChange} rows={4} disabled={blocked}>{content}</textarea>
+    <textarea id={label} className="form-control" onChange={onChange} rows={4} disabled={blocked} value={content} />
   </div >)
 }
 
