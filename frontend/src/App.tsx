@@ -27,8 +27,8 @@ function App() {
     })
   }
 
-  const exercisesList = exercises.map((exercise) => {
-    return <ExercisePreview exercise={exercise} />
+  const exercisesList = exercises.map((exercise, i) => {
+    return <ExercisePreview exercise={exercise} key={i} />
   })
 
   return (

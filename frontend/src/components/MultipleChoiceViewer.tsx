@@ -7,7 +7,7 @@ type MultipleChoiceViewerProps = {
 export const MultipleChoiceViewer: React.FC<MultipleChoiceViewerProps> = ({ choices }) => {
   return <div className="border p-2 rounded">
     {choices.map((choice, i) => {
-      return <div className="form-check">
+      return <div className="form-check" key={i}>
         <input
           type="radio"
           value={i.toString()}
