@@ -21,6 +21,17 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
     setChoices(newChoices);
   }
 
+  const handleDelete = () => {
+    setChoices([
+      { text: "", correct: false },
+      { text: "", correct: false },
+      { text: "", correct: false },
+      { text: "", correct: false },
+      { text: "", correct: false },
+      { text: "", correct: false }
+    ])
+  }
+
 
   return <div className="border p-2 rounded">
     {/* <label className="form-label">Multiple Choice</label> */}
@@ -46,6 +57,10 @@ export const MultipleChoiceCreator: React.FC<MultipleChoiceCreatorProps> = ({ ch
         {/* </label> */}
       </div>
     })
-    }</div>
+    }
+    <div className="d-flex justify-content-end mt-3">
+      <button type="button" className="btn btn-sm btn-danger" onClick={handleDelete}>Löschen</button>
+    </div>
+  </div>
 
 }

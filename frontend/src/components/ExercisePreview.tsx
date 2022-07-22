@@ -1,5 +1,6 @@
 import React from "react";
 import { AnwserInput } from "./AnwserInput";
+import { MultipleChoiceViewer } from "./MultipleChoiceViewer";
 
 export type ImageQuestioning = {
   type: "image_question";
@@ -59,15 +60,7 @@ function createTextAnwserEl({ anwser }: TextAnwser) {
 }
 
 function createMultipleChoiceAnwser({ choices }: MultipleChoiceAnwser) {
-  return <fieldset>
-    <legend>name</legend>
-    <div>
-      {choices.map((choice, i) => <label>
-        <input type="radio" name="section3" id={i.toString()} checked={choice.correct} />
-        {choice.text}
-      </label>)}
-    </div>
-  </fieldset>
+  return <MultipleChoiceViewer choices={choices} />
 }
 
 export const ExercisePreview: React.FC<ExerciseProps> = ({ exercise }) => {
