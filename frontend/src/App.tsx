@@ -10,7 +10,7 @@ function App() {
   const username = (new URLSearchParams(document.location.search)).get("ref");
   console.log("Found reference:", username);
   useEffect(() => {
-    fetch(`/api/return_all?ref=${username}`).then((response) => { response.json().then((result) => { setExercises(result) }) })
+    fetch(`/api/return_All?ref=${username}`).then((response) => { response.json().then((result) => { setExercises(result) }) })
   }, []);
 
   const addExercise = (exercise: ExerciseData) => {
