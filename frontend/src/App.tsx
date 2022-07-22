@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ExerciseFormContainer } from './components/ExerciseFormContainer';
 import { ExercisePreview, ExerciseData } from './components/ExercisePreview';
 
 
 function App() {
   const [exercises, setExercises] = useState<ExerciseData[]>([
-    {
-      section1: { type: "text_question", question: "Frage NR. 1" },
-      section2: { type: "text_question", question: "Fragen appendix" },
-      section3: { type: "text_anwser", anwser: "Antwort ist 42" },
-      userReference: "admin"
-    }
   ]);
+
+  const username = (new URLSearchParams(document.location.search)).get("ref");
+  console.log("Found reference:", username);
+  useEffect(() => {
+    fetch(`/api/return_all?ref=${username}`).then((response) => { response.json().then((result) => { setExercises(result) }) })
+  }, []);
 
   const addExercise = (exercise: ExerciseData) => {
     const newExercises = [...exercises];
@@ -27,14 +27,16 @@ function App() {
     })
   }
 
+  const exercisesList = exercises.map((exercise) => {
+    return <ExercisePreview exercise={exercise} />
+  })
+
   return (
     <div>
       <div className="container-fluid mt-4 px-5">
         <div className="row g-5">
           {
-            exercises.map((exercise) => {
-              return <ExercisePreview exercise={exercise} />
-            })
+            exercisesList.length >= 1 ? exercisesList : <h3>Noch keine Aufgaben hinzugefügt</h3>
           }
         </div>
         <hr className="my-5" />
