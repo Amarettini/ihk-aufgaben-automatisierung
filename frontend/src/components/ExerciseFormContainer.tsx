@@ -98,34 +98,41 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
   return (
     <div className="container bg-light border border border-2 rounded mb-4 p-3">
       <div className="row">
-        <h3 className="h2 mb-5">Aufgabe hinzufeugen</h3>
+        <h3 className="h2 mb-5">Aufgabe hinzufügen</h3>
       </div>
+
       <div className="row">
         <div className="col">
-          <h4>Waehle ein Bild aus...</h4>
+          <h4>Wähle ein Bild aus ...</h4>
           <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} blocked={!!section1Text} />
         </div>
+
         <div className="col">
-          <h4>...Oder erlaeuter die Aufgabe</h4>
+          <h4>... oder erläuter die Aufgabe</h4>
           <TextareaInput onChange={section1TextHandler} label={"Text"} blocked={!!section1selectedImage}>{section1Text}</TextareaInput>
         </div>
       </div>
+
+      <hr className="row" />
       <div className="mb-4">
         <h4>Aufgabentext</h4>
         <TextareaInput onChange={section2TextHandler} label={"Aufgabentext"}>{section2Text}</TextareaInput>
       </div>
+      <hr className="row" />
+
       <div className="row mb-4">
         <div className="col">
-          <h4>Musterloesung...</h4>
+          <h4>Gib eine Musterlösung an...</h4>
           <TextareaInput onChange={section3TextHandler} label={"Freitext Antwort"} blocked={!!(section3MultipleChoice[0].text)}>{section3Text}</TextareaInput>
         </div>
+
         <div className="col">
-          <h4>... oder Multiple Choice</h4>
+          <h4>... oder erstelle Mehrfachauswahl Aufgabe</h4>
           <MultipleChoiceCreator choices={section3MultipleChoice} setChoices={setSection3MultipleChoice} blocked={!!section3Text} />
         </div>
       </div>
       <div className="d-flex justify-content-end">
-        <button className="btn btn-primary" onClick={submitHandler}>+</button>
+        <button className="btn btn-primary" onClick={submitHandler}>Hinzufügen</button>
       </div>
     </div>
   )
