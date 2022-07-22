@@ -103,11 +103,11 @@ export const ExerciseFormContainer: React.FC<ExerciseFormContainerProps> = ({ on
       <div className="row">
         <div className="col">
           <h4>Waehle ein Bild aus...</h4>
-          <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} />
+          <ImageUpload selectedImage={section1selectedImage} setSelectedImage={setSection1SelectedImage} label={"Bild"} blocked={!!section1Text} />
         </div>
         <div className="col">
           <h4>...Oder erlaeuter die Aufgabe</h4>
-          <TextareaInput onChange={section1TextHandler} label={"Text"}>{section1Text}</TextareaInput>
+          <TextareaInput onChange={section1TextHandler} label={"Text"} blocked={!!section1selectedImage}>{section1Text}</TextareaInput>
         </div>
       </div>
       <div className="mb-4">

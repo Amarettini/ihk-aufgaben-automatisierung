@@ -1,16 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 
 type ImageUploadProps = {
   selectedImage: File | null;
   setSelectedImage: (image: File | null) => void;
   label: string;
+  blocked: boolean;
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedImage, setSelectedImage, label }) => {
+export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedImage, setSelectedImage, label, blocked }) => {
+  const [fileInputKey, setFileInputKey] = useState("");
+
+  const resetFileInput = () => {
+    let randomString = Math.random().toString(36);
+    setFileInputKey(randomString);
+  }
 
   const handleImageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     if (event.target.files) {
       setSelectedImage(event.target.files[0]);
+      event.target.files;
     } else {
       throw new Error("Bruh");
     }
@@ -18,7 +26,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedIma
 
   const handleRemoveImage = () => {
     setSelectedImage(null)
-
+    resetFileInput();
   }
 
   const imageData = () => {
@@ -34,7 +42,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = React.memo(({ selectedIma
   return (
     <div>
       {/* <label htmlFor={label} className={"form-label"}>{label}</label> */}
-      <input id={label} className="form-control mb-3" type="file" onChange={handleImageChange} />
+      <input id={label} className="form-control mb-3" type="file" onChange={handleImageChange} disabled={blocked} key={fileInputKey} />
       {imageData()}
       {selectedImage && <img src={URL.createObjectURL(selectedImage)} className="img-fluid" />}
       <button type="button" className="btn btn-sm btn-danger" onClick={handleRemoveImage}>Entfernen</button>
